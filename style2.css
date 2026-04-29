@@ -1,0 +1,435 @@
+@media (max-width: 500px) {	
+
+	.con-section-gos {
+	  touch-action: pan-x pan-y;
+	  overflow-x: hidden;
+	  overflow-y: hidden;
+	}
+
+    .con-gos{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100vh;
+        background:white;
+        z-index:220;
+
+        transition:left .3s ease;
+    }
+
+    .con-gos.show {
+        left: 0;
+    }
+
+	.header-gos {
+		width: 100vh;
+		height: 12.3vh;
+		position: relative;
+		background: white;
+		border-bottom: 0.35vh solid #d9d9d9;
+		top: 0;
+		z-index: 1;
+
+		display: flex;
+		justify-content: center;
+	}
+
+	.header-section-gos {
+		width: 90%;
+		height: 100%;
+		position: relative;
+		background: white;
+	}
+
+	.header-section1-gos {
+		width: 100%;
+		height: 5vh;
+		background: white;
+		position: relative; 
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.header-gos img {
+		position: absolute;
+		left: 0;
+		width: 9vw;
+	}
+
+	.header-gos p {
+		font-size: 4vw;
+		color: black;
+		font-weight: 500;
+	}
+
+	.header-section2-gos {
+		width: 100%;
+		height: 7vh;
+		position: relative;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.header-block-gos {
+		width: 100%;
+		height: 4.5vh;
+		background: #ebebeb;
+		border-radius: 2vw;
+
+		display: flex;
+		align-items: center;
+	}
+
+	.block1-gos {
+		width: 50%;
+		height: 87%;
+		background: white;
+		position: relative;
+		left: 0.5vw;
+		border-radius: 2vw;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: black;
+		font-size: 3.5vw;
+	}
+
+	.block2-gos {
+		width: 50%;
+		height: 87%;
+		background: rgba(211, 211, 211, 0.0);
+		position: relative;
+		right: 0.5vw;
+		border-radius: 2vw;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: black;
+		font-size: 3.5vw;
+	}
+
+	.con-section-gos {
+		width: 100%;
+		height: 60vh;
+		background: white;
+		position: absolute;
+		top: 17vh;
+	}
+
+	.con-section-gos img {
+		width: 90%;
+		position: relative;
+		left: 5%;
+	}
+
+	.footer-gos {
+		width: 100%;
+		height: 17vh;
+		position: absolute;
+		bottom: 2vh;
+		display: flex;
+		justify-content: center;
+	}
+
+	.footer-btn1-gos {
+		width: 90%;
+		position: absolute;
+		height: 7vh;
+		border-radius: 3vw;
+		background: #0089CF;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: white;
+		font-weight: 400;
+	}
+
+	.footer-btn1-gos img {
+		width: 5vw;
+		position: relative;
+		left: -2vw;
+	}
+
+	.footer-btn2-gos {
+		width: 90%;
+		position: absolute;
+		bottom: 1.5vh;
+		height: 7vh;
+		border-radius: 3vw;
+		background: white;
+		border: 0.8vw solid #0089CF;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: #0089CF;
+		font-weight: 400;
+	}
+
+	.footer-btn2-gos img {
+		width: 6vw;
+		position: relative;
+		left: -4vw;
+	}
+
+	.window-gos {
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.35);
+		position: absolute;
+		z-index: 2;
+
+		display: flex;
+		justify-content: center;
+
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.window-gos.active {
+		animation: windowAnim 0.5s ease forwards;
+		pointer-events: auto;
+	}
+
+	@keyframes windowAnim {
+		from { top: 5vh; opacity: 0; }
+		to   { top: 0;   opacity: 1; }
+	}
+
+	.window-block-gos {
+		width: 100%;
+		height: 43vh;
+		border-radius: 5vw;
+		background: white;
+		position: absolute;
+		bottom: 0;
+
+		display: flex;
+		justify-content: center;
+	}
+
+	.text1-gos {
+		font-size: 4.5vw;
+		position: absolute;
+		left: 5vw;
+		top: 0.5vh;
+		color: black;
+		font-weight: 600;
+	}
+
+	.text2-gos {
+		font-size: 4vw;
+		position: absolute;
+		top: 5.5vh;
+		color: black;
+		font-weight: 400;
+	}
+
+	.wind-img1-gos {
+		position: absolute;
+		width: 50vw;
+		top: 8.5vh;
+	}
+
+	.wind-img2-gos {
+		position: absolute;
+		right: 5vw;
+		top: 2vh;
+		width: 7vw;
+	}
+
+	.text3-gos {
+		font-size: 4vw;
+		position: absolute;
+		bottom: 7.5vh;
+		color: black;
+		font-weight: 400;
+	}
+
+	.text4-gos {
+		font-size: 5.25vw;
+		position: absolute;
+		bottom: 3.5vh;
+		color: black;
+		font-weight: 600;
+	}
+
+	.section2-gos {
+		width: 100%;
+		height: 87.2vh;
+		background: white;
+		position: absolute;
+		bottom: 0;
+		display: none;
+	}
+
+	.section2-block-gos {
+		width: 100%;
+		height: 7.5vh;
+		position: relative;
+
+		display: flex;
+		align-items: center;
+	}
+
+	.block-text1-gos {
+		font-size: 3vw;
+		left: 5%;
+		position: absolute;
+		top: 0.3vh;
+		color: grey;
+		font-weight: 400;
+	}
+
+	.block-text2-gos {
+		font-size: 4.25vw;
+		left: 5%;
+		position: absolute;
+		color: black;
+		top: 2.4vh;
+	}
+
+	.section2-block-gos img {
+		width: 4vw;
+		position: absolute;
+		right: 5%;
+	}
+
+
+    /* белый экран */
+
+    .loader-screen{
+        position: fixed;
+        top:0;
+        left:100vw;
+        width:100%;
+        height:100vh;
+        background:white;
+        z-index:200;
+        transition:left .4s ease;
+    }
+
+    .loader-screen.show{
+        left:0;
+    }
+
+    /* красная полоска */
+
+    .loader-bar{
+        position:absolute;
+        top:0;
+        left:0;
+        height:4px;
+        width:0%;
+        background:red;
+        transition:width 1s linear;
+    }
+
+    /* промежуточная секция */
+
+    .pre-section{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100vh;
+        background:white;
+        z-index:210;
+        display:none;
+    }
+
+    /* основная страница */
+
+    .con-gos{
+        width:100%;
+        height:100vh;
+        position:fixed;
+        top:0;
+        left:100vw;
+        z-index:220;
+        background:white;
+
+        display:flex;
+        justify-content:center;
+
+        transition:left .4s ease;
+    }
+
+    .con-gos.show{
+        left:0;
+    }
+
+    .pre-section div {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        left: 0;
+        top: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pre-section img {
+        position: relative;
+        width: 90%;
+    }
+
+    .pre-section p {
+        font-size: 3.5vw;
+        font-weight: 400;
+        color: #a0a0a0;
+        position: absolute;
+        bottom: 7vh;
+        width: 55vw;
+        text-align: center;
+    }
+
+    .header-section1-gos img {
+        transform: rotate(180deg);
+        width: 5vw;
+    }
+
+	.con-section-gos img {
+		border-radius: 1.4vw;
+	}
+
+	.section2-block-gos input {
+		border: none;
+		margin-top: 4vw;
+		width: 80vw;
+	}
+
+	.input1 {
+		position: absolute;
+		top: 20vh;
+		left: 20vw;
+	}
+
+	.input2 {
+		position: absolute;
+		top: 40vh;
+		left: 20vw;
+	}
+
+
+
+
+
+
+
+
+}
