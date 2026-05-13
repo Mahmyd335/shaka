@@ -289,13 +289,21 @@ reader.readAsDataURL(file)
 // кнопка сохранить
 saveBtn.addEventListener("click", function(){
 
-inputs.forEach((input, index)=>{
+inputs.forEach((inp, index)=>{
 
-localStorage.setItem("input"+index, input.value)
+localStorage.setItem("input"+index, inp.value)
 
-input.readOnly = true
+inp.readOnly = true
 
 })
+
+// сохраняем panelInput
+const panelInputEl = document.getElementById("panelInput")
+if(panelInputEl){
+  localStorage.setItem("panelText", panelInputEl.value)
+  localStorage.setItem("panelLocked", "true")
+  panelInputEl.disabled = true
+}
 
 localStorage.setItem("locked", "true")
 
@@ -344,30 +352,21 @@ saveBtn.style.display = "none"
 
 const input = document.getElementById("panelInput")
 
-// загрузка текста
-const savedText = localStorage.getItem("panelText")
-const isLocked = localStorage.getItem("panelLocked")
+// загрузка текста panelInput
+const savedPanelText = localStorage.getItem("panelText")
+const isPanelLocked = localStorage.getItem("panelLocked")
 
-if(savedText){
-    input.value = savedText
+if(savedPanelText){
+    input.value = savedPanelText
 }
 
-// если уже сохраняли кнопкой
-if(isLocked === "true"){
+if(isPanelLocked === "true"){
     input.disabled = true
-    saveBtn.style.display = "none"
 }
 
 // автосохранение при вводе
 input.addEventListener("input", () => {
     localStorage.setItem("panelText", input.value)
-})
-
-// кнопка сохранить
-saveBtn.addEventListener("click", () => {
-    localStorage.setItem("panelLocked", "true")
-    input.disabled = true
-    saveBtn.style.display = "none"
 })
 
 

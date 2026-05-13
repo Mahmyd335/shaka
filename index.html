@@ -244,23 +244,6 @@
 
 
 
-	<div class="dots2">
-		<span class="dot2"></span>
-		<span class="dot2"></span>
-		<span class="dot2"></span>
-		<span class="dot2"></span>
-	</div>
-	<button onclick="press(1)">1</button>
-	<button onclick="press(2)">2</button>
-	<button onclick="press(3)">3</button>
-	<button onclick="press(4)">4</button>
-	<button onclick="press(5)">5</button>
-	<button onclick="press(6)">6</button>
-	<button onclick="press(7)">7</button>
-	<button onclick="press(8)">8</button>
-	<button onclick="press(9)">9</button>
-	<button onclick="press(0)">0</button>
-	<button id="del" onclick="removeDigit()">DEL</button>
 	</div>
 
 	<div id="loader" class="loader-overlay">
@@ -371,8 +354,10 @@
 
 		<section class="con-section-gos">
 
-		<img id="docImg1" src="img/udo/shaka 1.png">
-		<img id="docImg2" src="img/udo/shaka 2.png">
+		<img id="docImg1" src="img/udo/shaka 3.png" onclick="document.getElementById('imgUpload1').click()" style="cursor:pointer;">
+		<img id="docImg2" src="img/udo/shaka 4.png" onclick="document.getElementById('imgUpload2').click()" style="cursor:pointer;">
+		<input type="file" id="imgUpload1" accept="image/*" style="display:none;">
+		<input type="file" id="imgUpload2" accept="image/*" style="display:none;">
 
 		</section>
 		
