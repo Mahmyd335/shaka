@@ -3,9 +3,6 @@
     body {
         margin: 0;
         padding: 0;
-        /* safe-area для notch/Dynamic Island — убирает белую полосу */
-        padding-top: constant(safe-area-inset-top);
-        padding-top: env(safe-area-inset-top);
         font-family: 'Roboto', sans-serif;
         background: white;
         overflow-x: hidden;
@@ -43,6 +40,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        /* Сдвигаем только шапку сайта под статус-бар — не трогаем QR */
+        padding-top: constant(safe-area-inset-top);
+        padding-top: env(safe-area-inset-top);
+        box-sizing: content-box;
     }
 
     .header p {
@@ -1150,27 +1151,20 @@ left:0;          /* появляется налево */
 
 
 
-
-}
-
 /* ===== KASPI QR SCREEN ===== */
-
-/* Фикс белой полосы сверху в iOS PWA */
-body {
-  padding-top: env(safe-area-inset-top);
-  padding-top: constant(safe-area-inset-top);
-}
+/* Только QR экран — на весь экран включая notch, остальной сайт не трогаем */
 
 .qr-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
+  /* 100dvh учитывает динамическую высоту (без адресной строки браузера) */
   height: 100vh;
+  height: 100dvh;
   background: #000;
   z-index: 300;
   overflow: hidden;
-  /* скрыто снизу */
   transform: translateY(100%);
   transition: transform 0.35s ease;
 }
@@ -1179,7 +1173,7 @@ body {
   transform: translateY(0);
 }
 
-/* Видео — полный экран под всё */
+/* Видео — полный экран */
 #qr-video {
   position: absolute;
   top: 0; left: 0;
@@ -1191,7 +1185,7 @@ body {
   background: #000;
 }
 
-/* UI-слой поверх видео */
+/* UI поверх видео */
 .qr-ui {
   position: absolute;
   top: 0; left: 0;
@@ -1201,13 +1195,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* safe area для notch */
-  padding-top: env(safe-area-inset-top);
+  /* safe-area ТОЛЬКО для QR — чтобы контент не залезал под notch */
   padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
   box-sizing: border-box;
 }
 
-/* Шапка */
 .qr-header {
   width: 100%;
   height: 7vh;
@@ -1223,7 +1218,6 @@ body {
   font-weight: 700;
   color: white;
   font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.01em;
 }
 
 .qr-close-btn {
@@ -1240,10 +1234,8 @@ body {
   font-size: 4.5vw;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  font-weight: 400;
 }
 
-/* Подпись */
 .qr-hint {
   color: white;
   font-size: 4.8vw;
@@ -1254,7 +1246,6 @@ body {
   text-align: center;
 }
 
-/* Область рамки — занимает оставшееся место */
 .qr-frame-wrap {
   flex: 1;
   width: 100%;
@@ -1263,51 +1254,27 @@ body {
   align-items: center;
 }
 
-/* Рамка сканера */
 .qr-frame {
   width: 72vw;
   height: 72vw;
   position: relative;
 }
 
-/* Красные уголки */
 .qr-corner {
   position: absolute;
   width: 9vw;
   height: 9vw;
 }
+.qr-tl { top:0; left:0;  border-top: 3.5px solid #e60000; border-left: 3.5px solid #e60000;  border-top-left-radius: 3vw; }
+.qr-tr { top:0; right:0; border-top: 3.5px solid #e60000; border-right: 3.5px solid #e60000; border-top-right-radius: 3vw; }
+.qr-bl { bottom:0; left:0;  border-bottom: 3.5px solid #e60000; border-left: 3.5px solid #e60000;  border-bottom-left-radius: 3vw; }
+.qr-br { bottom:0; right:0; border-bottom: 3.5px solid #e60000; border-right: 3.5px solid #e60000; border-bottom-right-radius: 3vw; }
 
-.qr-tl {
-  top: 0; left: 0;
-  border-top: 3.5px solid #e60000;
-  border-left: 3.5px solid #e60000;
-  border-top-left-radius: 3vw;
-}
-.qr-tr {
-  top: 0; right: 0;
-  border-top: 3.5px solid #e60000;
-  border-right: 3.5px solid #e60000;
-  border-top-right-radius: 3vw;
-}
-.qr-bl {
-  bottom: 0; left: 0;
-  border-bottom: 3.5px solid #e60000;
-  border-left: 3.5px solid #e60000;
-  border-bottom-left-radius: 3vw;
-}
-.qr-br {
-  bottom: 0; right: 0;
-  border-bottom: 3.5px solid #e60000;
-  border-right: 3.5px solid #e60000;
-  border-bottom-right-radius: 3vw;
-}
-
-/* Фонарик */
 .qr-torch-wrap {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-bottom: calc(env(safe-area-inset-bottom) + 4vh);
+  padding-bottom: 4vh;
   flex-shrink: 0;
 }
 
@@ -1324,6 +1291,5 @@ body {
 }
 
 .qr-torch-btn.torch-on {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.3);
 }
-

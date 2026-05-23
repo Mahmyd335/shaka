@@ -141,29 +141,28 @@ window.startCamera = async function(){
   const video = document.getElementById("qr-video");
   if(cameraStream) return;
 
-  // iOS Safari требует точных constraints без exact для facingMode
-  const constraints = [
-    // Сначала пробуем заднюю камеру (exact)
-    { video: { facingMode: { exact: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false },
-    // Потом без exact
-    { video: { facingMode: "environment" }, audio: false },
-    // Потом любую
-    { video: true, audio: false }
+  // Пробуем варианты по очереди
+  const attempts = [
+    { video: { facingMode: { exact: "environment" } }, audio: false },
+    { video: { facingMode: "environment" },             audio: false },
+    { video: true,                                      audio: false }
   ];
 
-  for(const c of constraints){
+  for(const constraints of attempts){
     try {
-      const stream = await navigator.mediaDevices.getUserMedia(c);
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
       cameraStream = stream;
       video.srcObject = stream;
-      // iOS требует play() вручную после назначения srcObject
-      video.play().catch(()=>{});
+      // iOS Safari требует setAttribute перед play
+      video.setAttribute("playsinline", "true");
+      video.setAttribute("muted", "true");
+      await video.play();
       return;
     } catch(e) {
-      // пробуем следующий вариант
+      console.log("Camera attempt failed:", e.name, e.message);
     }
   }
-  console.warn("Камера недоступна");
+  console.warn("Камера недоступна — все варианты исчерпаны");
 };
 
 window.stopCamera = function(){
@@ -173,7 +172,8 @@ window.stopCamera = function(){
     cameraStream = null;
     video.srcObject = null;
     torchOn = false;
-    document.getElementById("qr-torch-btn").classList.remove("torch-on");
+    const btn = document.getElementById("qr-torch-btn");
+    if(btn) btn.classList.remove("torch-on");
   }
 };
 
@@ -187,8 +187,8 @@ document.getElementById("qr-torch-btn").addEventListener("click", async () => {
   const track = cameraStream.getVideoTracks()[0];
   if(!track) return;
   try {
-    const cap = track.getCapabilities();
-    if(cap && cap.torch){
+    const cap = track.getCapabilities ? track.getCapabilities() : {};
+    if(cap.torch){
       torchOn = !torchOn;
       await track.applyConstraints({ advanced: [{ torch: torchOn }] });
       document.getElementById("qr-torch-btn").classList.toggle("torch-on", torchOn);
