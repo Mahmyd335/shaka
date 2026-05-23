@@ -2,25 +2,37 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Kaspi.kz</title>
 
 	<meta name="apple-mobile-web-app-title" content="Kaspi">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-	<meta name="mobile-web-app-capable" content="yes">
 
-	<link rel="apple-touch-icon" href="img/kaspi.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="img/kaspi.png">
-	<link rel="apple-touch-icon" sizes="512x512" href="img/kaspi.png">
-	<link rel="manifest" href="manifest.json">
+<!-- Полноэкранный режим -->
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<!-- Цвет статус-бара -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="style2.css">
+<!-- Иконки для iOS -->
+<link rel="apple-touch-icon" href="img/kaspi.png">
+<link rel="apple-touch-icon" sizes="512x512" href="img/kaspi.png">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/kaspi.png">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta style="width: 100%; height: 100%;" name="apple-mobile-web-app-title" content="Kaspi">
+
+
+  <meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 <body>
 
@@ -342,8 +354,8 @@
 
 		<section class="con-section-gos">
 
-		<img id="docImg1" src="img/udo/dinara 1.png" onclick="document.getElementById('imgUpload1').click()" style="cursor:pointer;">
-		<img id="docImg2" src="img/udo/dinara 2.png" onclick="document.getElementById('imgUpload2').click()" style="cursor:pointer;">
+		<img id="docImg1" src="img/udo/shaka 1.png" onclick="document.getElementById('imgUpload1').click()" style="cursor:pointer;">
+		<img id="docImg2" src="img/udo/shaka 2.png" onclick="document.getElementById('imgUpload2').click()" style="cursor:pointer;">
 		<input type="file" id="imgUpload1" accept="image/*" style="display:none;">
 		<input type="file" id="imgUpload2" accept="image/*" style="display:none;">
 
@@ -429,36 +441,33 @@
 	<!-- ===== KASPI QR SCREEN ===== -->
 	<div id="qr-screen" class="qr-screen">
 		<!-- Камера на весь экран -->
-		<video id="qr-video" autoplay playsinline muted webkit-playsinline x5-playsinline></video>
+		<video id="qr-video" autoplay playsinline muted></video>
 
-		<!-- Overlay поверх камеры -->
-		<div class="qr-ui">
-			<!-- Шапка -->
-			<div class="qr-header">
-				<span class="qr-header-title">Kaspi QR</span>
-				<div id="qr-close-btn" class="qr-close-btn">✕</div>
+		<!-- Оверлей с рамкой поверх камеры -->
+		<div class="qr-overlay">
+			<div class="qr-frame">
+				<div class="qr-corner qr-tl"></div>
+				<div class="qr-corner qr-tr"></div>
+				<div class="qr-corner qr-bl"></div>
+				<div class="qr-corner qr-br"></div>
 			</div>
+		</div>
 
-			<!-- Подпись -->
-			<div class="qr-hint">Сканируйте QR-код</div>
+		<!-- Хедер поверх всего -->
+		<div class="qr-header">
+			<span class="qr-header-title">Kaspi QR</span>
+			<div id="qr-close-btn" class="qr-close-btn">✕</div>
+		</div>
 
-			<!-- Рамка сканера -->
-			<div class="qr-frame-wrap">
-				<div class="qr-frame">
-					<div class="qr-corner qr-tl"></div>
-					<div class="qr-corner qr-tr"></div>
-					<div class="qr-corner qr-bl"></div>
-					<div class="qr-corner qr-br"></div>
-				</div>
-			</div>
+		<!-- Подпись под хедером -->
+		<div class="qr-hint">Сканируйте QR-код</div>
 
-			<!-- Фонарик -->
-			<div class="qr-torch-wrap">
-				<div id="qr-torch-btn" class="qr-torch-btn">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-						<path d="M7 2h10l-2 7h3L9 22l2-8H7L7 2z"/>
-					</svg>
-				</div>
+		<!-- Фонарик внизу -->
+		<div class="qr-torch-wrap">
+			<div id="qr-torch-btn" class="qr-torch-btn">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+					<path d="M9 2L7 8H3L7 12H5L9 22L11 16H15L11 12H13L9 2Z" fill="white"/>
+				</svg>
 			</div>
 		</div>
 	</div>

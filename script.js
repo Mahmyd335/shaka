@@ -135,34 +135,35 @@ nextWindow.addEventListener("touchend", e => {
 
 // ---------- КАМЕРА ----------
 let cameraStream = null;
-let torchOn = false;
 
 window.startCamera = async function(){
   const video = document.getElementById("qr-video");
-  if(cameraStream) return;
+  if(cameraStream) return; // уже запущена
 
-  // Пробуем варианты по очереди
-  const attempts = [
+  // iOS PWA требует явного взаимодействия пользователя и
+  // не всегда поддерживает { exact: "environment" }
+  const constraints = [
+    // 1й вариант: задняя камера (exact)
     { video: { facingMode: { exact: "environment" } }, audio: false },
-    { video: { facingMode: "environment" },             audio: false },
-    { video: true,                                      audio: false }
+    // 2й вариант: задняя камера (мягкий запрос — iOS PWA)
+    { video: { facingMode: "environment" }, audio: false },
+    // 3й вариант: любая камера
+    { video: true, audio: false }
   ];
 
-  for(const constraints of attempts){
+  for (const constraint of constraints) {
     try {
-      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      const stream = await navigator.mediaDevices.getUserMedia(constraint);
       cameraStream = stream;
       video.srcObject = stream;
-      // iOS Safari требует setAttribute перед play
-      video.setAttribute("playsinline", "true");
-      video.setAttribute("muted", "true");
-      await video.play();
+      // Для iOS нужен явный play() после установки srcObject
+      try { await video.play(); } catch(_) {}
       return;
     } catch(e) {
-      console.log("Camera attempt failed:", e.name, e.message);
+      // пробуем следующий вариант
     }
   }
-  console.warn("Камера недоступна — все варианты исчерпаны");
+  console.warn("Камера недоступна на этом устройстве");
 };
 
 window.stopCamera = function(){
@@ -171,9 +172,6 @@ window.stopCamera = function(){
     cameraStream.getTracks().forEach(t => t.stop());
     cameraStream = null;
     video.srcObject = null;
-    torchOn = false;
-    const btn = document.getElementById("qr-torch-btn");
-    if(btn) btn.classList.remove("torch-on");
   }
 };
 
@@ -181,17 +179,16 @@ window.stopCamera = function(){
 // ---------- ЗАКРЫТИЕ QR ----------
 document.getElementById("qr-close-btn").addEventListener("click", closeQR);
 
-// Фонарик
+// Фонарик (если поддерживается)
 document.getElementById("qr-torch-btn").addEventListener("click", async () => {
   if(!cameraStream) return;
   const track = cameraStream.getVideoTracks()[0];
   if(!track) return;
   try {
-    const cap = track.getCapabilities ? track.getCapabilities() : {};
+    const cap = track.getCapabilities();
     if(cap.torch){
-      torchOn = !torchOn;
-      await track.applyConstraints({ advanced: [{ torch: torchOn }] });
-      document.getElementById("qr-torch-btn").classList.toggle("torch-on", torchOn);
+      const settings = track.getSettings();
+      await track.applyConstraints({ advanced: [{ torch: !settings.torch }] });
     }
   } catch(e) {}
 });

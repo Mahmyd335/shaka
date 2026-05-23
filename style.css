@@ -5,7 +5,7 @@
         padding: 0;
         font-family: 'Roboto', sans-serif;
         background: white;
-        overflow-x: hidden;
+        overflow-x: hidden; /* Страница не скроллится */
         overflow-y: hidden;
 
         user-select: none;
@@ -40,10 +40,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* Сдвигаем только шапку сайта под статус-бар — не трогаем QR */
-        padding-top: constant(safe-area-inset-top);
-        padding-top: env(safe-area-inset-top);
-        box-sizing: content-box;
     }
 
     .header p {
@@ -316,15 +312,12 @@
         height: 10vh;
         position: fixed;
         z-index: 100;
-        bottom: 0;
-        padding-bottom: constant(safe-area-inset-bottom);
-        padding-bottom: env(safe-area-inset-bottom);
+        top: 90vh;
         background: white;
 
         display: flex;
         justify-content: center;
         align-items: center;
-        box-sizing: border-box;
     }
 
     .footer div {
@@ -1151,29 +1144,35 @@ left:0;          /* появляется налево */
 
 
 
+
+}
+
 /* ===== KASPI QR SCREEN ===== */
-/* Только QR экран — на весь экран включая notch, остальной сайт не трогаем */
+@media (max-width: 500px) {
 
 .qr-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  /* 100dvh учитывает динамическую высоту (без адресной строки браузера) */
   height: 100vh;
   height: 100dvh;
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
   background: #000;
-  z-index: 300;
-  overflow: hidden;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
   transform: translateY(100%);
   transition: transform 0.35s ease;
+  overflow: hidden;
 }
 
 .qr-screen.show {
   transform: translateY(0);
 }
 
-/* Видео — полный экран */
+/* Видео растягивается на весь экран */
 #qr-video {
   position: absolute;
   top: 0; left: 0;
@@ -1182,82 +1181,39 @@ left:0;          /* появляется налево */
   object-fit: cover;
   display: block;
   z-index: 0;
-  background: #000;
 }
 
-/* UI поверх видео */
-.qr-ui {
+/* Оверлей поверх видео */
+.qr-overlay {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   z-index: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* safe-area ТОЛЬКО для QR — чтобы контент не залезал под notch */
-  padding-top: constant(safe-area-inset-top);
-  padding-top: env(safe-area-inset-top);
-  padding-bottom: constant(safe-area-inset-bottom);
-  padding-bottom: env(safe-area-inset-bottom);
-  box-sizing: border-box;
-}
-
-.qr-header {
-  width: 100%;
-  height: 7vh;
-  display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  flex-shrink: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(0,0,0,0.45) 0%,
+      transparent 22%,
+      transparent 78%,
+      rgba(0,0,0,0.45) 100%
+    ),
+    linear-gradient(to right,
+      rgba(0,0,0,0.45) 0%,
+      transparent 14%,
+      transparent 86%,
+      rgba(0,0,0,0.45) 100%
+    );
 }
 
-.qr-header-title {
-  font-size: 4.5vw;
-  font-weight: 700;
-  color: white;
-  font-family: 'Roboto', sans-serif;
-}
-
-.qr-close-btn {
-  position: absolute;
-  right: 4vw;
-  width: 9vw;
-  height: 9vw;
-  background: rgba(80,80,80,0.7);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 4.5vw;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.qr-hint {
-  color: white;
-  font-size: 4.8vw;
-  font-weight: 600;
-  font-family: 'Roboto', sans-serif;
-  margin: 1vh 0 0;
-  flex-shrink: 0;
-  text-align: center;
-}
-
-.qr-frame-wrap {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Рамка — квадрат по центру */
 .qr-frame {
   width: 72vw;
   height: 72vw;
   position: relative;
+  border-radius: 4vw;
+  border: 1.5px solid rgba(255,255,255,0.2);
 }
 
 .qr-corner {
@@ -1265,31 +1221,86 @@ left:0;          /* появляется налево */
   width: 9vw;
   height: 9vw;
 }
-.qr-tl { top:0; left:0;  border-top: 3.5px solid #e60000; border-left: 3.5px solid #e60000;  border-top-left-radius: 3vw; }
-.qr-tr { top:0; right:0; border-top: 3.5px solid #e60000; border-right: 3.5px solid #e60000; border-top-right-radius: 3vw; }
-.qr-bl { bottom:0; left:0;  border-bottom: 3.5px solid #e60000; border-left: 3.5px solid #e60000;  border-bottom-left-radius: 3vw; }
-.qr-br { bottom:0; right:0; border-bottom: 3.5px solid #e60000; border-right: 3.5px solid #e60000; border-bottom-right-radius: 3vw; }
+.qr-tl { top:-1px; left:-1px;  border-top: 3px solid #e60000; border-left: 3px solid #e60000;  border-top-left-radius: 4vw; }
+.qr-tr { top:-1px; right:-1px; border-top: 3px solid #e60000; border-right: 3px solid #e60000; border-top-right-radius: 4vw; }
+.qr-bl { bottom:-1px; left:-1px;  border-bottom: 3px solid #e60000; border-left: 3px solid #e60000;  border-bottom-left-radius: 4vw; }
+.qr-br { bottom:-1px; right:-1px; border-bottom: 3px solid #e60000; border-right: 3px solid #e60000; border-bottom-right-radius: 4vw; }
 
+/* Хедер поверх всего */
+.qr-header {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 13vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.qr-header-title {
+  font-size: 4.5vw;
+  font-weight: 600;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.qr-close-btn {
+  position: absolute;
+  right: 4.5vw;
+  width: 9vw;
+  height: 9vw;
+  background: rgba(255,255,255,0.22);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 4vw;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Подпись под хедером */
+.qr-hint {
+  position: absolute;
+  top: 13vw;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 4.2vw;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  z-index: 2;
+}
+
+/* Фонарик внизу по центру */
 .qr-torch-wrap {
+  position: absolute;
+  bottom: 8vh;
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-bottom: 4vh;
-  flex-shrink: 0;
+  z-index: 2;
 }
 
 .qr-torch-btn {
-  width: 14vw;
-  height: 14vw;
-  background: rgba(60,60,60,0.75);
+  width: 13vw;
+  height: 13vw;
+  background: rgba(255,255,255,0.18);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(4px);
 }
 
-.qr-torch-btn.torch-on {
-  background: rgba(255,255,255,0.3);
+/* Анимация сканирования удалена */
+.qr-scan-line { display: none; }
+
 }
