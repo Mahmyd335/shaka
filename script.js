@@ -135,27 +135,35 @@ nextWindow.addEventListener("touchend", e => {
 
 // ---------- КАМЕРА ----------
 let cameraStream = null;
+let torchOn = false;
 
 window.startCamera = async function(){
   const video = document.getElementById("qr-video");
-  if(cameraStream) return; // уже запущена
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: { exact: "environment" } },
-      audio: false
-    });
-    cameraStream = stream;
-    video.srcObject = stream;
-  } catch(e) {
-    // Если нет задней камеры — пробуем любую
+  if(cameraStream) return;
+
+  // iOS Safari требует точных constraints без exact для facingMode
+  const constraints = [
+    // Сначала пробуем заднюю камеру (exact)
+    { video: { facingMode: { exact: "environment" }, width: { ideal: 1280 }, height: { ideal: 720 } }, audio: false },
+    // Потом без exact
+    { video: { facingMode: "environment" }, audio: false },
+    // Потом любую
+    { video: true, audio: false }
+  ];
+
+  for(const c of constraints){
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      const stream = await navigator.mediaDevices.getUserMedia(c);
       cameraStream = stream;
       video.srcObject = stream;
-    } catch(err) {
-      console.warn("Камера недоступна:", err);
+      // iOS требует play() вручную после назначения srcObject
+      video.play().catch(()=>{});
+      return;
+    } catch(e) {
+      // пробуем следующий вариант
     }
   }
+  console.warn("Камера недоступна");
 };
 
 window.stopCamera = function(){
@@ -164,6 +172,8 @@ window.stopCamera = function(){
     cameraStream.getTracks().forEach(t => t.stop());
     cameraStream = null;
     video.srcObject = null;
+    torchOn = false;
+    document.getElementById("qr-torch-btn").classList.remove("torch-on");
   }
 };
 
@@ -171,16 +181,17 @@ window.stopCamera = function(){
 // ---------- ЗАКРЫТИЕ QR ----------
 document.getElementById("qr-close-btn").addEventListener("click", closeQR);
 
-// Фонарик (если поддерживается)
+// Фонарик
 document.getElementById("qr-torch-btn").addEventListener("click", async () => {
   if(!cameraStream) return;
   const track = cameraStream.getVideoTracks()[0];
   if(!track) return;
   try {
     const cap = track.getCapabilities();
-    if(cap.torch){
-      const settings = track.getSettings();
-      await track.applyConstraints({ advanced: [{ torch: !settings.torch }] });
+    if(cap && cap.torch){
+      torchOn = !torchOn;
+      await track.applyConstraints({ advanced: [{ torch: torchOn }] });
+      document.getElementById("qr-torch-btn").classList.toggle("torch-on", torchOn);
     }
   } catch(e) {}
 });
