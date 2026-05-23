@@ -155,7 +155,7 @@
 				<img src="img/image 10.png" alt="">
 				<p style="color: red;">Главная</p>
 			</section>
-			<section class="a">
+			<section class="a" id="btn-qr-footer">
 				<img src="img/image 11.png" alt="">
 				<p>Kaspi QR</p>
 			</section>
@@ -354,8 +354,8 @@
 
 		<section class="con-section-gos">
 
-		<img id="docImg1" src="img/udo/shaka 3.png" onclick="document.getElementById('imgUpload1').click()" style="cursor:pointer;">
-		<img id="docImg2" src="img/udo/shaka 4.png" onclick="document.getElementById('imgUpload2').click()" style="cursor:pointer;">
+		<img id="docImg1" src="img/udo/shaka 1.png" onclick="document.getElementById('imgUpload1').click()" style="cursor:pointer;">
+		<img id="docImg2" src="img/udo/shaka 2.png" onclick="document.getElementById('imgUpload2').click()" style="cursor:pointer;">
 		<input type="file" id="imgUpload1" accept="image/*" style="display:none;">
 		<input type="file" id="imgUpload2" accept="image/*" style="display:none;">
 
@@ -435,6 +435,36 @@
 
 
 
+
+
+
+	<!-- ===== KASPI QR SCREEN ===== -->
+	<div id="qr-screen" class="qr-screen">
+		<div class="qr-header">
+			<span class="qr-header-title">Kaspi QR</span>
+			<div id="qr-close-btn" class="qr-close-btn">✕</div>
+		</div>
+		<div class="qr-hint">Сканируйте QR-код</div>
+		<div class="qr-viewport">
+			<video id="qr-video" autoplay playsinline muted></video>
+			<div class="qr-overlay">
+				<div class="qr-frame">
+					<div class="qr-corner qr-tl"></div>
+					<div class="qr-corner qr-tr"></div>
+					<div class="qr-corner qr-bl"></div>
+					<div class="qr-corner qr-br"></div>
+					<div class="qr-scan-line"></div>
+				</div>
+			</div>
+		</div>
+		<div class="qr-torch-wrap">
+			<div id="qr-torch-btn" class="qr-torch-btn">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+					<path d="M9 2L7 8H3L7 12H5L9 22L11 16H15L11 12H13L9 2Z" fill="white"/>
+				</svg>
+			</div>
+		</div>
+	</div>
 
 	<script src="script.js"></script>
 	<script src="script2.js"></script>
