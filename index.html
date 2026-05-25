@@ -2,37 +2,28 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 	<title>Kaspi.kz</title>
 
+	<!-- PWA iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-title" content="Kaspi">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#ffffff">
 
-<!-- Полноэкранный режим -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-
-<!-- Цвет статус-бара -->
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<!-- Иконки для iOS -->
-<link rel="apple-touch-icon" href="img/kaspi.png">
-<link rel="apple-touch-icon" sizes="512x512" href="img/kaspi.png">
-
+	<!-- Иконка для "Добавить на экран домой" -->
+	<link rel="apple-touch-icon" sizes="180x180" href="img/kaspi.png">
+	<link rel="apple-touch-icon" href="img/kaspi.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-
-  <link rel="apple-touch-icon" sizes="180x180" href="img/kaspi.png">
-
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta style="width: 100%; height: 100%;" name="apple-mobile-web-app-title" content="Kaspi">
-
-
-  <meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-
+  <link rel="manifest" href="./manifest.json">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="style2.css">
+  <link rel="stylesheet" type="text/css" href="style3.css">
 </head>
 <body>
 
@@ -354,8 +345,8 @@
 
 		<section class="con-section-gos">
 
-		<img id="docImg1" src="img/udo/shaka 1.png" onclick="document.getElementById('imgUpload1').click()" style="cursor:pointer;">
-		<img id="docImg2" src="img/udo/shaka 2.png" onclick="document.getElementById('imgUpload2').click()" style="cursor:pointer;">
+		<img id="docImg1" src="img/udo/dinara 1.png" onclick="document.getElementById('imgUpload1').click()" style="cursor:pointer;">
+		<img id="docImg2" src="img/udo/dinara 2.png" onclick="document.getElementById('imgUpload2').click()" style="cursor:pointer;">
 		<input type="file" id="imgUpload1" accept="image/*" style="display:none;">
 		<input type="file" id="imgUpload2" accept="image/*" style="display:none;">
 
@@ -440,42 +431,46 @@
 
 	<!-- ===== KASPI QR SCREEN ===== -->
 	<div id="qr-screen" class="qr-screen">
-		<!-- Камера на весь экран -->
-		<video id="qr-video" autoplay playsinline muted></video>
-
-		<!-- Оверлей с рамкой поверх камеры -->
-		<div class="qr-overlay">
-			<div class="qr-frame">
-				<div class="qr-corner qr-tl"></div>
-				<div class="qr-corner qr-tr"></div>
-				<div class="qr-corner qr-bl"></div>
-				<div class="qr-corner qr-br"></div>
-			</div>
-		</div>
-
-		<!-- Хедер поверх всего -->
 		<div class="qr-header">
 			<span class="qr-header-title">Kaspi QR</span>
 			<div id="qr-close-btn" class="qr-close-btn">✕</div>
 		</div>
-
-		<!-- Подпись под хедером -->
 		<div class="qr-hint">Сканируйте QR-код</div>
-
-		<!-- Фонарик внизу -->
+		<div class="qr-viewport">
+			<video id="qr-video" autoplay playsinline muted></video>
+			<div class="qr-overlay">
+				<div class="qr-frame">
+					<div class="qr-corner qr-tl"></div>
+					<div class="qr-corner qr-tr"></div>
+					<div class="qr-corner qr-bl"></div>
+					<div class="qr-corner qr-br"></div>
+					<div class="qr-scan-line"></div>
+				</div>
+			</div>
+		</div>
 		<div class="qr-torch-wrap">
 			<div id="qr-torch-btn" class="qr-torch-btn">
-				<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
 					<path d="M9 2L7 8H3L7 12H5L9 22L11 16H15L11 12H13L9 2Z" fill="white"/>
 				</svg>
 			</div>
 		</div>
 	</div>
 
+	
+
 	<script src="script.js"></script>
 	<script src="script2.js"></script>
 
-	
+	<script>
+	  // Регистрация Service Worker для работы как PWA на iPhone
+	  if ('serviceWorker' in navigator) {
+	    window.addEventListener('load', function() {
+	      navigator.serviceWorker.register('./sw.js', { scope: './' })
+	        .catch(function(e) { console.warn('SW error:', e); });
+	    });
+	  }
+	</script>
 
 </body>
 </html>

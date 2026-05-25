@@ -139,31 +139,23 @@ let cameraStream = null;
 window.startCamera = async function(){
   const video = document.getElementById("qr-video");
   if(cameraStream) return; // уже запущена
-
-  // iOS PWA требует явного взаимодействия пользователя и
-  // не всегда поддерживает { exact: "environment" }
-  const constraints = [
-    // 1й вариант: задняя камера (exact)
-    { video: { facingMode: { exact: "environment" } }, audio: false },
-    // 2й вариант: задняя камера (мягкий запрос — iOS PWA)
-    { video: { facingMode: "environment" }, audio: false },
-    // 3й вариант: любая камера
-    { video: true, audio: false }
-  ];
-
-  for (const constraint of constraints) {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: { exact: "environment" } },
+      audio: false
+    });
+    cameraStream = stream;
+    video.srcObject = stream;
+  } catch(e) {
+    // Если нет задней камеры — пробуем любую
     try {
-      const stream = await navigator.mediaDevices.getUserMedia(constraint);
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
       cameraStream = stream;
       video.srcObject = stream;
-      // Для iOS нужен явный play() после установки srcObject
-      try { await video.play(); } catch(_) {}
-      return;
-    } catch(e) {
-      // пробуем следующий вариант
+    } catch(err) {
+      console.warn("Камера недоступна:", err);
     }
   }
-  console.warn("Камера недоступна на этом устройстве");
 };
 
 window.stopCamera = function(){
