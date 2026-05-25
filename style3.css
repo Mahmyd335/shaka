@@ -450,3 +450,144 @@
 .income-more-btn:active {
   background: #f0f0f0;
 }
+
+/* ===== УЛУЧШЕННАЯ СЕКЦИЯ "ВЫ НЕДАВНО СМОТРЕЛИ" ===== */
+.section4 {
+    width: 100%;
+    position: relative;
+    padding: 0 0 3vw 0;
+    overflow: hidden;
+    background: #fff;
+}
+
+.section4-header {
+    padding: 3.5vw 4vw 2vw 4vw;
+}
+
+.section4-title {
+    font-size: 4.4vw;
+    font-weight: 700;
+    color: #111;
+}
+
+.section4-scroll {
+    display: flex;
+    gap: 3vw;
+    overflow-x: auto;
+    padding: 0 4vw 2vw 4vw;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.section4-scroll::-webkit-scrollbar { display: none; }
+
+.box4-new {
+    flex: 0 0 29vw;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2.5vw;
+    border: 0.3vw solid #ececec;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0.5vw 2vw rgba(0,0,0,0.05);
+}
+
+.box4-img-wrap {
+    width: 100%;
+    height: 29vw;
+    position: relative;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.box4-img-wrap img {
+    width: 90%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.box4-bonus {
+    position: absolute;
+    top: 1.5vw;
+    left: 1.5vw;
+    background: #F02D3A;
+    color: #fff;
+    font-size: 2.6vw;
+    font-weight: 700;
+    padding: 0.5vw 1.5vw;
+    border-radius: 1vw;
+    z-index: 2;
+    line-height: 1.4;
+}
+
+.box4-info {
+    padding: 1.5vw 2vw 2vw 2vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3vw;
+}
+
+.box4-price {
+    font-size: 3.4vw;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+    position: static !important;
+    top: auto !important;
+}
+
+.box4-bonus-price {
+    font-size: 2.7vw;
+    font-weight: 600;
+    color: #111;
+    background: #e8f5e8;
+    border-radius: 1vw;
+    padding: 0.5vw 1.2vw;
+    margin: 0;
+    position: static !important;
+    top: auto !important;
+    line-height: 1.4;
+}
+
+.box4-bonus-price span {
+    font-size: 2.3vw;
+    color: #4a8c4a;
+    font-weight: 400;
+}
+
+.box4-name {
+    font-size: 2.8vw;
+    color: #333;
+    margin: 0;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: static !important;
+    top: auto !important;
+}
+
+.box4-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    margin-top: 0.3vw;
+}
+
+.box4-stars {
+    color: #F4A100;
+    font-size: 3vw;
+}
+
+.box4-score {
+    font-size: 2.8vw;
+    font-weight: 600;
+    color: #111;
+}
+
+.box4-count {
+    font-size: 2.6vw;
+    color: #888;
+}

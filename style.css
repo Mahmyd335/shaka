@@ -5,8 +5,8 @@
         padding: 0;
         font-family: 'Roboto', sans-serif;
         background: white;
-        overflow-x: hidden; /* Страница не скроллится */
-        overflow-y: hidden;
+        overflow-x: hidden;
+        overflow-y: auto; /* Страница скроллится */
 
         user-select: none;
         -webkit-user-select: none;
@@ -224,57 +224,7 @@
 
 
 
-    .section4 {
-        width: 100%;
-        height: 40vh;
-        position: relative;
-        overflow-x: hidden;
-    }
-
-    .section4-sctn {
-        width: 112vw;
-        height: 40vh;
-        position: relative;
-        left: 5%;
-
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .section4 p {
-        position: absolute;
-        top: 0;
-        left: 0;
-        color: #111;
-        font-size: 4.4vw;
-        font-weight: 700;
-    }
-
-    .box4 {
-        width: 26vw;
-        height: 25vw;
-        position: relative;
-        border: 0.1vh solid #e4e4e4;
-        top: 6vh;
-        border-radius: 2vw;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .box4 img {
-        position: relative;
-        width: 100%;
-    }
-
-    .box4 p {
-        color: #111;
-        font-size: 4vw;
-        font-weight: 500;
-        position: absolute;
-        top: 10.5vh;
-    }
+    /* section4 и box4 — переопределены в style3.css */
 
 
 
@@ -1298,3 +1248,161 @@ left:0;          /* появляется налево */
 .page-screen.page-open {
   display: block;
 }
+
+    /* ===== ФИЛЬТРЫ И КАРТОЧКИ ТОВАРОВ ===== */
+
+    .section-filters {
+        width: 100%;
+        padding: 3vw 4vw 2vw 4vw;
+        background: white;
+        box-sizing: border-box;
+    }
+
+    .filters-row {
+        display: flex;
+        gap: 2.5vw;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .filters-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-btn {
+        flex-shrink: 0;
+        padding: 2vw 4.5vw;
+        border-radius: 20vw;
+        font-family: 'Roboto', sans-serif;
+        font-size: 3.6vw;
+        font-weight: 500;
+        cursor: pointer;
+        white-space: nowrap;
+        border: 1.5px solid #e74c3c;
+        background: white;
+        color: #e74c3c;
+    }
+
+    .filter-btn-active {
+        background: #e74c3c;
+        color: white;
+        border-color: #e74c3c;
+    }
+
+    .section-products {
+        width: 100%;
+        padding: 0 3vw 20vw 3vw;
+        box-sizing: border-box;
+        background: white;
+    }
+
+    .product-row {
+        display: flex;
+        gap: 3vw;
+        margin-bottom: 4vw;
+    }
+
+    .product-card {
+        flex: 1;
+        background: white;
+        border-radius: 2.5vw;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .product-img-wrap {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: #f2f2f2;
+        border-radius: 2.5vw;
+        position: relative;
+        height: 20vh;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 2.5vw;
+    }
+
+    .product-bonus-badge {
+        position: absolute;
+        bottom: 2vw;
+        left: 2vw;
+        background: #27ae60;
+        color: white;
+        font-size: 3vw;
+        font-weight: 600;
+        padding: 0.8vw 2vw;
+        border-radius: 1.2vw;
+    }
+
+    .product-info {
+        padding: 2vw 1vw 0 1vw;
+    }
+
+    .product-price {
+        font-size: 4vw;
+        font-weight: 700;
+        color: #111;
+        margin: 0 0 1vw 0;
+    }
+
+    .product-price-bonus {
+        font-size: 3vw;
+        color: #27ae60;
+        background: #e8f8ef;
+        border-radius: 1vw;
+        padding: 0.8vw 1.5vw;
+        margin: 0 0 1.5vw 0;
+        display: inline-block;
+        line-height: 1.3;
+    }
+
+    .product-name {
+        font-size: 3.2vw;
+        font-weight: 400;
+        color: #333;
+        margin: 0 0 1.5vw 0;
+        line-height: 1.3;
+    }
+
+    .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 1vw;
+        margin-bottom: 1.5vw;
+    }
+
+    .product-rating .stars {
+        font-size: 3vw;
+    }
+
+    .rating-val {
+        font-size: 3.2vw;
+        font-weight: 600;
+        color: #111;
+    }
+
+    .rating-count {
+        font-size: 3vw;
+        color: #888;
+    }
+
+    .product-installment {
+        display: inline-block;
+        background: #fff3b0;
+        color: #7a6000;
+        font-size: 3vw;
+        font-weight: 600;
+        padding: 0.8vw 2vw;
+        border-radius: 1vw;
+        margin-bottom: 1vw;
+    }
+
