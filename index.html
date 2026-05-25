@@ -24,6 +24,24 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="style2.css">
   <link rel="stylesheet" type="text/css" href="style3.css">
+  <script>
+    // Удаляем все старые кэши Service Worker при загрузке страницы
+    if ('caches' in window) {
+      caches.keys().then(keys => {
+        keys.forEach(key => {
+          if (key !== 'kaspi-v3') caches.delete(key);
+        });
+      });
+    }
+    // Перерегистрируем SW если уже есть старый
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        registrations.forEach(reg => {
+          if (reg.active && reg.active.scriptURL) reg.update();
+        });
+      });
+    }
+  </script>
 </head>
 <body>
 

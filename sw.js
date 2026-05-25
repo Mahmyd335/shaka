@@ -1,4 +1,4 @@
-const CACHE = 'kaspi-v2';
+const CACHE = 'kaspi-v3';
 
 const FILES = [
   './index.html',
