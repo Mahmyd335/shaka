@@ -205,3 +205,43 @@ btn1Wind.addEventListener('click', () => {
   btn1Wind.style.zIndex = '1'
   btn2Wind.style.zIndex = '0'
 })
+
+
+// ======== НАВИГАЦИЯ ВКЛАДОК ========
+document.addEventListener('DOMContentLoaded', function () {
+
+  const pages = {
+    messages: document.getElementById('page-messages'),
+    services:  document.getElementById('page-services'),
+  };
+
+  const tabs = {
+    home:     document.getElementById('btn-home'),
+    messages: document.getElementById('btn-messages'),
+    services: document.getElementById('btn-services'),
+  };
+
+  const allTabBtns = document.querySelectorAll('.footer .a p');
+
+  function setActiveTab(name) {
+    allTabBtns.forEach(p => p.style.color = '');
+    Object.values(pages).forEach(p => p && p.classList.remove('page-open'));
+
+    if (name === 'home') {
+      if (tabs.home) tabs.home.querySelector('p').style.color = 'red';
+    } else if (name === 'messages') {
+      if (tabs.messages) tabs.messages.querySelector('p').style.color = 'red';
+      if (pages.messages) pages.messages.classList.add('page-open');
+    } else if (name === 'services') {
+      if (tabs.services) tabs.services.querySelector('p').style.color = 'red';
+      if (pages.services) pages.services.classList.add('page-open');
+    }
+  }
+
+  if (tabs.home) tabs.home.querySelector('p').style.color = 'red';
+
+  if (tabs.home)     tabs.home.addEventListener('click',     () => setActiveTab('home'));
+  if (tabs.messages) tabs.messages.addEventListener('click', () => setActiveTab('messages'));
+  if (tabs.services) tabs.services.addEventListener('click', () => setActiveTab('services'));
+
+});
