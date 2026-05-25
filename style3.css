@@ -168,7 +168,6 @@
   justify-content: space-between;
   background: #fff;
   padding: 12px 14px 10px;
-  border-bottom: 1px solid #e8e8e8;
   flex-shrink: 0;
 }
 .chat-back-btn {
@@ -208,7 +207,7 @@
   padding: 10px 10px 20px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 14px;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -216,7 +215,7 @@
 .chat-date-divider {
   display: flex;
   justify-content: center;
-  margin: 10px 0 6px;
+  margin: 14px 0 10px;
 }
 .chat-date-divider span {
   font-size: 12px;
@@ -270,7 +269,7 @@
   position: relative;
 }
 .bubble-wrap-right {
-  background: #c3c8cc;
+  background: #AFB9C2;
   border-radius: 14px 14px 4px 14px;
 }
 
@@ -420,7 +419,7 @@
 
 .income-confirm-btn {
   flex: 1;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.0);
   border: 1.5px solid #126388;
   border-radius: 9px;
   height: 4vh;
@@ -437,7 +436,7 @@
 
 .income-more-btn {
   flex-shrink: 0;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.0);
   border: 1.5px solid #126388;
   border-radius: 9px;
   height: 4vh;
