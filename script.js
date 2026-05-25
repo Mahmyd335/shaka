@@ -245,3 +245,47 @@ document.addEventListener('DOMContentLoaded', function () {
   if (tabs.services) tabs.services.addEventListener('click', () => setActiveTab('services'));
 
 });
+
+
+// ======== ЧАТ KASPI GOLD ========
+document.addEventListener('DOMContentLoaded', function () {
+
+  const chatScreen   = document.getElementById('chat-kaspi-gold');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatBackBtn  = document.getElementById('chat-back-btn');
+
+  // Первый элемент в списке сообщений — Kaspi Gold
+  const kaspiGoldItem = document.querySelector('#page-messages .msg-item');
+
+  function openChat() {
+    chatScreen.classList.add('chat-open');
+    // Прокрутить вниз (к последнему сообщению)
+    requestAnimationFrame(() => {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+  }
+
+  function closeChat() {
+    chatScreen.classList.remove('chat-open');
+  }
+
+  if (kaspiGoldItem) {
+    kaspiGoldItem.addEventListener('click', openChat);
+  }
+
+  if (chatBackBtn) {
+    chatBackBtn.addEventListener('click', closeChat);
+  }
+
+  // Свайп вправо — закрыть чат
+  let chatStartX = 0;
+  if (chatScreen) {
+    chatScreen.addEventListener('touchstart', e => {
+      chatStartX = e.touches[0].clientX;
+    }, { passive: true });
+    chatScreen.addEventListener('touchend', e => {
+      if (e.changedTouches[0].clientX - chatStartX > 80) closeChat();
+    }, { passive: true });
+  }
+
+});
