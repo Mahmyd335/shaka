@@ -138,23 +138,17 @@ let cameraStream = null;
 
 window.startCamera = async function(){
   const video = document.getElementById("qr-video");
-  if(cameraStream) return; // уже запущена
+  if(cameraStream) return;
   try {
+    // ideal вместо exact — работает и на телефоне (задняя) и на компьютере (любая)
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: { exact: "environment" } },
+      video: { facingMode: { ideal: "environment" } },
       audio: false
     });
     cameraStream = stream;
     video.srcObject = stream;
-  } catch(e) {
-    // Если нет задней камеры — пробуем любую
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-      cameraStream = stream;
-      video.srcObject = stream;
-    } catch(err) {
-      console.warn("Камера недоступна:", err);
-    }
+  } catch(err) {
+    console.warn("Камера недоступна:", err);
   }
 };
 
