@@ -1272,7 +1272,7 @@ left:0;          /* появляется налево */
 
     .filter-btn {
         flex-shrink: 0;
-        padding: 2vw 4.5vw;
+        padding: 1.2vw 4.5vw;
         border-radius: 20vw;
         font-family: 'Roboto', sans-serif;
         font-size: 3.6vw;
@@ -1333,9 +1333,9 @@ left:0;          /* появляется налево */
 
     .product-bonus-badge {
         position: absolute;
-        bottom: 2vw;
-        left: 2vw;
-        background: #27ae60;
+        bottom: 0;
+        left: 0;
+        background: green;
         color: white;
         font-size: 3vw;
         font-weight: 600;
@@ -1356,13 +1356,19 @@ left:0;          /* появляется налево */
 
     .product-price-bonus {
         font-size: 3vw;
-        color: #27ae60;
+        color: green;
         background: #e8f8ef;
         border-radius: 1vw;
         padding: 0.8vw 1.5vw;
         margin: 0 0 1.5vw 0;
         display: inline-block;
         line-height: 1.3;
+        font-weight: 600;
+    }
+
+    .product-price-bonus span {
+        color: #111;
+        font-weight: 400;
     }
 
     .product-name {
@@ -1397,8 +1403,8 @@ left:0;          /* появляется налево */
 
     .product-installment {
         display: inline-block;
-        background: #fff3b0;
-        color: #7a6000;
+        background: rgb(214, 214, 15);
+        color: #111;
         font-size: 3vw;
         font-weight: 600;
         padding: 0.8vw 2vw;

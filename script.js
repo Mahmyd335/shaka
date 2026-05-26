@@ -10,11 +10,14 @@ let pinPassed = false;
 let pendingAction = null;
 
 const btnGos = document.getElementById("brt-gos");
+const btnBank = document.getElementById("btn-moy-bank");
 const btnQr  = document.getElementById("btn-qr-footer");
 const pinPanel  = document.getElementById("pinPanel");
 const loader    = document.getElementById("loader");
 const nextWindow = document.getElementById("next-window");
+const bankWindow = document.getElementById("moy-bank-window");
 const arrow     = document.getElementById("arrow1");
+const arrowBank = document.getElementById("arrow-bank");
 const del       = document.getElementById("del");
 const qrScreen  = document.getElementById("qr-screen");
 
@@ -26,6 +29,14 @@ function openGos(){
 
 function closeGos(){
   nextWindow.classList.remove("show");
+}
+
+function openBank(){
+  bankWindow.classList.add("show");
+}
+
+function closeBank(){
+  bankWindow.classList.remove("show");
 }
 
 function openQR(){
@@ -46,6 +57,17 @@ btnGos.onclick = () => {
     pinPanel.classList.add("show");
   } else {
     openGos();
+  }
+};
+
+
+// ---------- КНОПКА МОЙ БАНК ----------
+btnBank.onclick = () => {
+  if(!pinPassed){
+    pendingAction = 'bank';
+    pinPanel.classList.add("show");
+  } else {
+    openBank();
   }
 };
 
@@ -85,6 +107,8 @@ window.press = function(num){
 
             if(pendingAction === 'gos'){
               openGos();
+            } else if(pendingAction === 'bank'){
+              openBank();
             } else if(pendingAction === 'qr'){
               openQR();
             }
@@ -124,12 +148,21 @@ function updateDots(){
 // ---------- СТРЕЛКА (закрыть Госуслуги) ----------
 arrow.onclick = () => closeGos();
 
+// ---------- СТРЕЛКА (закрыть Мой Банк) ----------
+arrowBank.onclick = () => closeBank();
 
 // ---------- SWIPE (закрыть Госуслуги) ----------
 let startX = 0;
 nextWindow.addEventListener("touchstart", e => { startX = e.touches[0].clientX; });
 nextWindow.addEventListener("touchend", e => {
   if(e.changedTouches[0].clientX - startX > 120) closeGos();
+});
+
+// ---------- SWIPE (закрыть Мой Банк) ----------
+let startXBank = 0;
+bankWindow.addEventListener("touchstart", e => { startXBank = e.touches[0].clientX; });
+bankWindow.addEventListener("touchend", e => {
+  if(e.changedTouches[0].clientX - startXBank > 120) closeBank();
 });
 
 

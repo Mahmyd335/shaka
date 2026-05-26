@@ -485,15 +485,15 @@
     display: flex;
     flex-direction: column;
     border-radius: 2.5vw;
-    border: 0.3vw solid #ececec;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 0.5vw 2vw rgba(0,0,0,0.05);
 }
 
 .box4-img-wrap {
-    width: 100%;
+    width: 90%;
     height: 29vw;
+    border-radius: 2vw;
+    border: 1.5px solid #ddd;
     position: relative;
     background: #f8f8f8;
     display: flex;
@@ -510,9 +510,9 @@
 
 .box4-bonus {
     position: absolute;
-    top: 1.5vw;
-    left: 1.5vw;
-    background: #F02D3A;
+    bottom: 1vh;
+    left: 0;
+    background: green;
     color: #fff;
     font-size: 2.6vw;
     font-weight: 700;
@@ -541,7 +541,7 @@
 .box4-bonus-price {
     font-size: 2.7vw;
     font-weight: 600;
-    color: #111;
+    color: #4a8c4a;
     background: #e8f5e8;
     border-radius: 1vw;
     padding: 0.5vw 1.2vw;
@@ -553,7 +553,7 @@
 
 .box4-bonus-price span {
     font-size: 2.3vw;
-    color: #4a8c4a;
+    color: #111;
     font-weight: 400;
 }
 
@@ -590,4 +590,250 @@
 .box4-count {
     font-size: 2.6vw;
     color: #888;
+}
+
+/* ===== МОЙ БАНК ===== */
+.bank-card {
+    background: white;
+    border-radius: 4vw;
+    padding: 4vw 4.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.5vw 2vw rgba(0,0,0,0.06);
+}
+
+.bank-card-left {
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+}
+
+.bank-card-icon {
+    width: 11vw;
+    height: 11vw;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.bank-card-name {
+    margin: 0;
+    font-size: 4vw;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.bank-card-sub {
+    margin: 0.5vw 0 0;
+    font-size: 3.3vw;
+    color: #888;
+}
+
+.bank-card-amount {
+    font-size: 4vw;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.bank-deposit-btn {
+    background: white;
+    border-radius: 4vw;
+    padding: 4vw 4.5vw;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0.5vw 2vw rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+/* ========================================
+   МОЙ БАНК — анимация как у gos + дизайн
+   ======================================== */
+
+#moy-bank-window,
+.bank-screen {
+    position: fixed;
+    top: 0;
+    left: 100vw;          /* спрятан справа — как .next-window */
+    width: 100vw;
+    height: 100vh;
+    background: #f2f2f7;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: left 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Открыто — едет влево */
+#moy-bank-window.show,
+.bank-screen.show {
+    left: 0;
+}
+
+/* ── Шапка ── */
+.bank-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    width: 100%;
+    height: 12vw;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 0.3vw 2vw rgba(0,0,0,0.07);
+    flex-shrink: 0;
+}
+
+.bank-arrow {
+    position: absolute;
+		left: 2.5%;
+		width: 5vw;
+    transform: rotate(180deg);
+}
+
+.bank-arrow:active {
+    opacity: 0.9;
+    background: rgba(0,0,0,0.1);
+}
+
+.bank-header-title {
+    font-size: 4vw;
+		color: black;
+		font-weight: 500;
+    margin-left: 12.5vw;
+}
+
+/* ── Контент ── */
+.bank-content {
+    padding: 4.5vw 4vw 8vw;
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    flex: 1;
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Карточки ── */
+.bank-card {
+    background: #ffffff;
+    border-radius: 4vw;
+    padding: 4vw 4.5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0.5vw 2.5vw rgba(0,0,0,0.06);
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.bank-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 0.2vw 1vw rgba(0,0,0,0.05);
+}
+
+.bank-card-left {
+    display: flex;
+    align-items: center;
+    gap: 3.5vw;
+}
+
+.bank-card-icon {
+    width: 13.5vw;
+    height: 9vw;
+    border-radius: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.bank-card-name {
+    margin: 0;
+    font-size: 4.2vw;
+    font-weight: 500;
+    color: #111111;
+    line-height: 1.25;
+}
+
+.bank-card-sub {
+    margin: 0.8vw 0 0;
+    font-size: 3.4vw;
+    color: #8e8e93;
+    font-weight: 400;
+}
+
+.bank-card-amount {
+    font-size: 4.2vw;
+    font-weight: 500;
+    color: #111111;
+    letter-spacing: -0.02em;
+}
+
+/* ── Иконка Kaspi Gold ── */
+.bank-icon-gold {
+    background: #DEB979;
+    box-shadow: 0 1vw 2vw rgba(255, 180, 0, 0.2);
+}
+
+/* ── Иконка Kaspi Бонус — зелёная ── */
+.bank-icon-bonus {
+    background: linear-gradient(135deg, #2ea853 0%, #1b7a3e 100%);
+    box-shadow: 0 1vw 2vw rgba(27, 138, 62, 0.25);
+}
+
+.bank-bonus-letter {
+    font-size: 5.5vw;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+}
+
+/* ── Кнопка "Открыть депозит" ── */
+.bank-deposit-btn {
+    background: #ffffff;
+    border-radius: 4vw;
+    padding: 4vw 4.5vw;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+    box-shadow: 0 0.5vw 2.5vw rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.bank-deposit-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 0.2vw 1vw rgba(0,0,0,0.05);
+}
+
+.bank-deposit-plus {
+    width: 8vw;
+    height: 8vw;
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6vw;
+    font-weight: 300;
+    color: #007aff;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.bank-deposit-text {
+    font-size: 4.2vw;
+    font-weight: 400;
+    color: #007aff;
 }
