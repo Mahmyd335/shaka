@@ -600,7 +600,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0.5vw 2vw rgba(0,0,0,0.06);
 }
 
 .bank-card-left {
@@ -644,7 +643,7 @@
     padding: 4vw 4.5vw;
     display: flex;
     align-items: center;
-    box-shadow: 0 0.5vw 2vw rgba(0,0,0,0.06);
+    box-shadow: 0 0.5vw 1vw rgba(0,0,0,0.06);
     cursor: pointer;
 }
 
@@ -760,7 +759,7 @@
 .bank-card-name {
     margin: 0;
     font-size: 4.2vw;
-    font-weight: 500;
+    font-weight: 400;
     color: #111111;
     line-height: 1.25;
 }
@@ -774,7 +773,7 @@
 
 .bank-card-amount {
     font-size: 4.2vw;
-    font-weight: 500;
+    font-weight: 400;
     color: #111111;
     letter-spacing: -0.02em;
 }
