@@ -269,7 +269,7 @@
   position: relative;
 }
 .bubble-wrap-right {
-  background: #BFC3C7;
+  background: #cbcdcf;
   border-radius: 14px 14px 4px 14px;
 }
 
@@ -730,7 +730,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0.5vw 2.5vw rgba(0,0,0,0.06);
+    box-shadow: 0 0.5vw 1.5vw rgba(0,0,0,0.06);
     transition: transform 0.12s, box-shadow 0.12s;
 }
 
