@@ -156,7 +156,7 @@
     .box p {
         position: absolute;
         color: #111;
-        top: 5.5vh;
+        top: 6vh;
         font-size: 3.5vw;
         font-weight: 400;
         z-index: 1;
@@ -1442,12 +1442,14 @@ left:0;          /* появляется налево */
   width: 7vw;
   height: 7vw;
   object-fit: contain;
+  border-radius: 50%;
 }
 
 .srv-header-title {
-  font-size: 4.5vw;
-  font-weight: 600;
-  color: #111;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.2px;
 }
 
 .srv-header-langs {
@@ -1457,9 +1459,9 @@ left:0;          /* появляется налево */
 }
 
 .srv-lang {
-  font-size: 3.5vw;
+  font-size: 3vw;
   color: #888;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .srv-lang-active {
@@ -1468,6 +1470,7 @@ left:0;          /* появляется налево */
   border: 1px solid #d0d0d0;
   border-radius: 1vw;
   padding: 0.3vw 1.5vw;
+  font-size: 1vw;
 }
 
 .srv-user-row {
@@ -1478,7 +1481,7 @@ left:0;          /* появляется налево */
   align-items: center;
   justify-content: space-between;
   background: white;
-  border-bottom: 0.1vh solid #e8e8e8;
+  border-bottom: 1vh solid #e8e8e8;
 }
 
 .srv-user-info {
@@ -1501,7 +1504,7 @@ left:0;          /* появляется налево */
 
 .srv-user-name {
   font-size: 4vw;
-  font-weight: 600;
+  font-weight: 500;
   color: #111;
 }
 
@@ -1609,17 +1612,17 @@ left:0;          /* появляется налево */
 
 .srv-partner-name {
   font-size: 4vw;
-  font-weight: 600;
+  font-weight: 500;
   color: #111;
 }
 
 .srv-partner-bonus {
-  background: #22b573;
+  background: green;
   color: white;
   font-size: 2.8vw;
   font-weight: 600;
-  padding: 0.4vw 1.5vw;
-  border-radius: 1vw;
+  padding: 0.5vw 1.75vw;
+  border-radius: 2vw;
 }
 
 .srv-partner-desc {
@@ -1757,7 +1760,7 @@ left:0;          /* появляется налево */
 /* Language switcher pill */
 .srv-lang-switcher {
   border: 1.5px solid #e0342a;
-  border-radius: 1.5vw;
+  border-radius: 3vw;
   padding: 0.5vw 2vw;
   display: inline-flex;
   align-items: center;
@@ -1766,7 +1769,7 @@ left:0;          /* появляется налево */
 .srv-lang-active {
   color: #e0342a !important;
   font-weight: 600;
-  font-size: 3.5vw;
+  font-size: 3vw;
   border: none !important;
   padding: 0 !important;
   border-radius: 0 !important;
@@ -1776,13 +1779,14 @@ left:0;          /* появляется налево */
 .srv-grid {
   background: white;
   padding: 1vw 2vw 1vw 2vw;
-  border-bottom: 0.1vh solid #e8e8e8;
+  height: 33vh;
+  border-bottom: 1vh solid #e8e8e8;
 }
 
 .srv-grid-row {
   display: flex;
   justify-content: space-between;
-  height: 9vh;
+  height: 10vh;
   margin-bottom: 0;
 }
 
@@ -1798,10 +1802,11 @@ left:0;          /* появляется налево */
 .srv-photo-placeholder {
   width: calc(100% - 8vw);
   margin: 3vw 4vw;
-  height: 28vw;
+  height: 30vw;
   background: #1677ff;
   border-radius: 3vw;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 /* --- CAROUSEL: same style as section1 on main page --- */
@@ -1813,7 +1818,7 @@ left:0;          /* появляется налево */
 .srv-carousel-scroll {
   width: 95%;
   margin-left: 4.5vw;
-  height: 13.5vh;
+  height: 17vh;
   display: flex;
   gap: 4vw;
   overflow-x: auto;
