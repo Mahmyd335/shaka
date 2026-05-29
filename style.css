@@ -1412,3 +1412,436 @@ left:0;          /* появляется налево */
         margin-bottom: 1vw;
     }
 
+/* ===== SERVICES PAGE ===== */
+
+.srv-header {
+  width: 100%;
+  background: white;
+  border-bottom: 0.1vh solid #e8e8e8;
+  padding: 0 4vw;
+  box-sizing: border-box;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+}
+
+.srv-header-inner {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.srv-header-left {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.srv-kaspi-logo {
+  width: 7vw;
+  height: 7vw;
+  object-fit: contain;
+}
+
+.srv-header-title {
+  font-size: 4.5vw;
+  font-weight: 600;
+  color: #111;
+}
+
+.srv-header-langs {
+  display: flex;
+  gap: 2vw;
+  align-items: center;
+}
+
+.srv-lang {
+  font-size: 3.5vw;
+  color: #888;
+  font-weight: 400;
+}
+
+.srv-lang-active {
+  color: #111;
+  font-weight: 600;
+  border: 1px solid #d0d0d0;
+  border-radius: 1vw;
+  padding: 0.3vw 1.5vw;
+}
+
+.srv-user-row {
+  width: 100%;
+  padding: 2.5vw 4vw;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border-bottom: 0.1vh solid #e8e8e8;
+}
+
+.srv-user-info {
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+}
+
+.srv-avatar {
+  width: 11vw;
+  height: 11vw;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.srv-user-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.srv-user-name {
+  font-size: 4vw;
+  font-weight: 600;
+  color: #111;
+}
+
+.srv-user-settings {
+  font-size: 3.2vw;
+  color: #888;
+  font-weight: 400;
+}
+
+.srv-arrow-right {
+  width: 4vw;
+  opacity: 0.5;
+}
+
+/* Icon grid */
+.srv-grid {
+  background: white;
+  padding: 1.5vw 2vw 2vw 2vw;
+  border-bottom: 0.1vh solid #e8e8e8;
+}
+
+.srv-grid-row {
+  display: flex;
+  justify-content: space-between;
+  height: 9vh;
+  margin-bottom: 0.5vh;
+}
+
+.srv-icon-box {
+  width: 22vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.srv-icon-box img {
+  width: 78%;
+  object-fit: contain;
+}
+
+.srv-icon-box p {
+  position: absolute;
+  bottom: 0.3vh;
+  font-size: 3.2vw;
+  font-weight: 400;
+  color: #111;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Partner services */
+.srv-partners-header {
+  background: #f5f5f5;
+  padding: 2.5vw 4vw 1vw 4vw;
+}
+
+.srv-partners-title {
+  font-size: 4vw;
+  font-weight: 600;
+  color: #111;
+}
+
+.srv-partners-list {
+  background: white;
+  padding: 0 4vw;
+}
+
+.srv-partner-row {
+  display: flex;
+  align-items: center;
+  padding: 3vw 0;
+  gap: 3vw;
+}
+
+.srv-partner-logo-wrap {
+  width: 11vw;
+  height: 11vw;
+  border-radius: 3vw;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.srv-partner-logo {
+  width: 80%;
+  object-fit: contain;
+}
+
+.srv-partner-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+}
+
+.srv-partner-name-row {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.srv-partner-name {
+  font-size: 4vw;
+  font-weight: 600;
+  color: #111;
+}
+
+.srv-partner-bonus {
+  background: #22b573;
+  color: white;
+  font-size: 2.8vw;
+  font-weight: 600;
+  padding: 0.4vw 1.5vw;
+  border-radius: 1vw;
+}
+
+.srv-partner-desc {
+  font-size: 3.2vw;
+  color: #888;
+  font-weight: 400;
+}
+
+.srv-partner-divider {
+  height: 0.1vh;
+  background: #ebebeb;
+  margin-left: 14vw;
+}
+
+.srv-arrow-sm {
+  width: 3vw;
+  flex-shrink: 0;
+}
+
+/* Banner */
+.srv-banner {
+  margin: 3vw 4vw;
+  background: linear-gradient(135deg, #1a3c5e 0%, #1b4f72 100%);
+  border-radius: 3vw;
+  display: flex;
+  overflow: hidden;
+  padding: 3.5vw 4vw;
+  box-sizing: border-box;
+  align-items: center;
+  min-height: 18vw;
+}
+
+.srv-banner-left {
+  flex: 1;
+}
+
+.srv-banner-pct {
+  font-size: 5.5vw;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 0.5vw 0;
+}
+
+.srv-banner-sub {
+  font-size: 3.5vw;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 2vw 0;
+  font-weight: 400;
+}
+
+.srv-banner-tags {
+  display: flex;
+  gap: 2vw;
+}
+
+.srv-tag-gold {
+  background: #c9a227;
+  color: white;
+  font-size: 3vw;
+  font-weight: 700;
+  padding: 0.8vw 2.5vw;
+  border-radius: 1.5vw;
+}
+
+.srv-tag-red {
+  background: #e0342a;
+  color: white;
+  font-size: 3vw;
+  font-weight: 700;
+  padding: 0.8vw 2.5vw;
+  border-radius: 1.5vw;
+}
+
+.srv-banner-right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.srv-banner-img {
+  width: 18vw;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+.srv-banner-date {
+  font-size: 2.8vw;
+  color: rgba(255,255,255,0.7);
+  margin-top: 1vw;
+  font-weight: 400;
+}
+
+
+/* ============================================
+   SERVICES PAGE — OVERRIDES & NEW STYLES
+   ============================================ */
+
+/* --- HEADER: center logo+title, right langs --- */
+.srv-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 6vh;
+  background: white;
+  border-bottom: 0.1vh solid #e8e8e8;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.srv-header-spacer {
+  flex: 1;
+}
+
+.srv-header-center-block {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.srv-header-langs {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2vw;
+  padding-right: 4vw;
+}
+
+/* Language switcher pill */
+.srv-lang-switcher {
+  border: 1.5px solid #e0342a;
+  border-radius: 1.5vw;
+  padding: 0.5vw 2vw;
+  display: inline-flex;
+  align-items: center;
+}
+
+.srv-lang-active {
+  color: #e0342a !important;
+  font-weight: 600;
+  font-size: 3.5vw;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* --- ICON GRID: use same .box style as main sections --- */
+.srv-grid {
+  background: white;
+  padding: 1vw 2vw 1vw 2vw;
+  border-bottom: 0.1vh solid #e8e8e8;
+}
+
+.srv-grid-row {
+  display: flex;
+  justify-content: space-between;
+  height: 9vh;
+  margin-bottom: 0;
+}
+
+/* srv-icon-box2 wraps .box so it inherits the exact main-page icon size */
+.srv-icon-box2 {
+  width: 22vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- PHOTO PLACEHOLDER (blue, no content) --- */
+.srv-photo-placeholder {
+  width: calc(100% - 8vw);
+  margin: 3vw 4vw;
+  height: 28vw;
+  background: #1677ff;
+  border-radius: 3vw;
+  flex-shrink: 0;
+}
+
+/* --- CAROUSEL: same style as section1 on main page --- */
+.srv-carousel-section {
+  width: 100%;
+  margin-bottom: 2vw;
+}
+
+.srv-carousel-scroll {
+  width: 95%;
+  margin-left: 4.5vw;
+  height: 13.5vh;
+  display: flex;
+  gap: 4vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.srv-carousel-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.srv-carousel-card {
+  width: 42.5vw;
+  height: 13.5vh;
+  background: #d3d3d3;
+  border-radius: 4vw;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+.srv-carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4vw;
+}
+
